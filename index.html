@@ -1,0 +1,257 @@
+<!-- Javascript Calculator Summative by Zain Talat-->
+<!Doctype html>  
+<html>  
+<head>  
+<title>Javascript Calculator</title> 
+      
+
+<!-- Contains link to css,ios icon and status bar ect.-->
+    <iframe src="http://free.timeanddate.com/clock/i6ak0y7r/n749/fs9/tt1/tw0" frameborder="0" width="84" height="12"></iframe>
+
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" sizes="120x120" href="icon.png">
+
+</head> 
+    
+    
+<body>  
+  
+<div class="calbody">  
+<form name="lcdform">
+<!--Display screen for calculator-->
+<input id="output" name="lcds" type="text" value="" />  
+   
+  
+</form>
+    <!-- Below are all calculator buttons including thier own onclick and id -->  
+<div id="buttons"> 
+<button id="AC" onclick="AC();">AC</button> 
+<button id="mystry" onclick="square();" class="logo">  <img id="logo" src="Mystery.png" />  </button>
+<button id="multi" onclick="multiply();">×</button>
+<button id="seven" onclick="seven();">7</button>  
+<button id="eight" onclick="eight();">8</button>  
+<button id="nine" onclick="nine();">9</button>
+<button id="minus" onclick="subtract();">-</button>    
+<button id="four" onclick="four();">4</button>  
+<button id="five" onclick="five();">5</button>  
+<button id="six" onclick="six();">6</button>
+<button id="plus" onclick="add();">+</button>
+<button id="one" onclick="one();">1</button>  
+<button id="two" onclick="two();">2</button>  
+<button id="three" onclick="three();">3</button>
+<button id="divi" onclick="divide();">÷</button> 
+<button id="zero" onclick="zero();">0</button>
+ <button  id="deci" onclick="decimal();">.</button> 
+    <button id="equal" onclick="equals();">=</button> 
+    <button  id="flash" class="bigButton" value="AUTO" onclick="doAutoFlip();">Flash</button>
+    <button id="stopflash" class="bigButton" value="STOP" onclick="stopFlip();">End Flash</button> 
+    <input  type="file" id="user_picture" onchange="update_image()">
+   
+</div>  
+</div>
+    
+   
+<!-- Javascript code -->  
+    
+    <script>
+//array from Watzdis app// 
+var light = new Array(); 
+var colour= 0;
+var t=0;
+var n= 3;
+var myArray=[]; //Blank Array to push the results// 
+//array of flashlight colours
+light[0] = 'blue';
+light[1] = 'orange'; 
+light [2]= 'red';
+light [3]= 'purple';
+light [4]= '#5cb85c';
+var reset = true; // reset true will allows you to change 0 into the operation or number//
+function zero() {
+	if (reset) {
+		document.getElementById("output").value = "0";
+		reset = false; 
+	}
+	else {
+		document.getElementById("output").value += "0";
+	}
+}
+function one() {
+	if (reset) {
+		document.getElementById("output").value = "1";
+		reset = false; //reset false allows you to add onto existing number or operation//
+	}
+	else {
+		document.getElementById("output").value += "1";
+	}
+}
+function two() {
+	if (reset) {
+		document.getElementById("output").value = "2";
+		reset = false;
+	}
+	else {
+		document.getElementById("output").value += "2";
+	}
+}
+function three() {
+	if (reset) {
+		document.getElementById("output").value = "3";
+		reset = false;
+	}
+	else {
+		document.getElementById("output").value += "3";
+	}
+}
+function four() {
+	if (reset) {
+		document.getElementById("output").value = "4";
+		reset = false;
+	}
+	else {
+		document.getElementById("output").value += "4";
+	}
+}
+function five() {
+	if (reset) {
+		document.getElementById("output").value = "5";
+		reset = false;
+	}
+	else {
+		document.getElementById("output").value += "5";
+	}
+}
+function six() {
+	if (reset) {
+		document.getElementById("output").value = "6";
+		reset = false;
+	}
+	else {
+		document.getElementById("output").value += "6";
+	}
+}
+function seven() {
+	if (reset) {
+		document.getElementById("output").value = "7";
+		reset = false;
+	}
+	else {
+		document.getElementById("output").value += "7";
+	}
+}
+function eight() {
+	if (reset) {
+		document.getElementById("output").value = "8";
+		reset = false;
+	}
+	else {
+		document.getElementById("output").value += "8";
+	}
+}
+function nine() {
+	if (reset) {
+		document.getElementById("output").value = "9";
+		reset = false;
+	}
+	else {
+		document.getElementById("output").value += "9";
+	}
+}
+function decimal() {
+	if (reset) {
+		document.getElementById("output").value = ".";
+		reset = false;
+	}
+	else {
+		document.getElementById("output").value += ".";
+	}
+}
+function AC() {
+	document.getElementById("output").value = "0";
+    myArray=[]; // will clear array//
+	reset = true;
+}
+function add() {
+	document.getElementById("output").value += "+";
+	reset = false;
+}
+function subtract() {
+	document.getElementById("output").value += "-";
+	reset = false;
+}
+function multiply() {
+	document.getElementById("output").value += "*";     
+    reset = false;
+}
+function divide() {
+	document.getElementById("output").value += "/";  
+	reset = false;
+    
+}
+   
+function equals() {
+	var result = eval(document.getElementById("output").value); //evaluates calculates operation//
+	document.getElementById("output").value = result;
+     myArray.push (result);  
+	reset = true;
+     
+       
+                 
+}
+function square(){
+    var result = (document.getElementById("output").value);  // mystery function //
+	document.getElementById("output").value = result*result;
+	reset = true;   
+}
+function answers() {
+            
+            if (myArray.length<5){
+            document.getElementById("output").value = myArray;  // cannot be more than 4 answers displyed//
+            
+            }
+            else{
+              document.getElementById("output").value = "too many numbers";   
+            }
+        }
+        
+        
+// start of flip
+function flip(whichway){						
+    document.body.style.backgroundColor = light[whichway]; 
+}	
+//start of autoflip
+function doAutoFlip() {
+    flip (colour)
+        if (colour< light.length){
+           colour++;
+          }
+        else {
+            colour= 0;
+              }
+        t= setTimeout ('doAutoFlip()',300);
+        }
+          
+        
+function stopFlip() {
+    clearTimeout (t);
+        }
+              
+function update_text(){ 
+    var user_text = document.getElementById("user_text"); 
+    var meme_text = document.getElementById("meme_text"); 
+    meme_text.innerHTML = user_text.value;
+}
+        
+function update_image(){ 
+    var img = document.querySelector('img'); 
+    var file = document.querySelector('input[type=file]').files[0]; 
+    img.src = window.URL.createObjectURL(file); // will change logo on mystery button//
+}
+        
+    </script>
+    </body>
+</html>
